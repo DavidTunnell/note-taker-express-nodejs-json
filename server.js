@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 // make public (client) folder available to users
 app.use(express.static('public'));
 
-// also provide specific paths
+// also provide specific paths to notes
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
@@ -44,11 +44,7 @@ app.delete("/api/notes/:id", function(req, res) {
     //get the id being passed in
     const id = req.params.id;
     //if it exists delete else throw error
-    if (id) {
-        deleteFromDbJson(dbFileLocation, id);
-    } else {
-
-    }
+    deleteFromDbJson(dbFileLocation, id);
     //return id of deleted record;
     res.json({ id: id });
 });
