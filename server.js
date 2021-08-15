@@ -39,18 +39,41 @@ app.post('/api/notes', (req, res) => {
     res.json({ id: requestBody.id });
 })
 
-//Update/PUT
-
 //Delete
+app.delete("/api/notes/:id", function(req, res) {
+    //get the id being passed in
+    const id = req.params.id;
+    //if it exists delete else throw error
+    if (id) {
+        deleteFromDbJson(dbFileLocation, id);
+    } else {
 
-//appends to db/json file and saves it
+    }
+    //return id of deleted record;
+    res.json({ id: id });
+});
+
+
+//appends to db/json file and saves it - https://stackoverflow.com/questions/36093042/how-do-i-add-to-an-existing-json-file-in-node-js
 const writeToDbJson = (dbFileLocation, newEntry) => {
     fs.readFile(dbFileLocation, function(err, data) {
         var json = JSON.parse(data);
         json.push(newEntry);
         fs.writeFile(dbFileLocation, JSON.stringify(json), function(err) {
             if (err) throw err;
-            console.log('The "data to append" was appended to file!');
+            console.log('Notes were appended to ' + dbFileLocation + '!');
+        });
+    })
+}
+
+//find and removes record by id and then saves
+const deleteFromDbJson = (dbFileLocation, idPassed) => {
+    fs.readFile(dbFileLocation, function(err, data) {
+        var json = JSON.parse(data);
+        const filteredArray = json.filter(({ id }) => id !== idPassed)
+        fs.writeFile(dbFileLocation, JSON.stringify(filteredArray), function(err) {
+            if (err) throw err;
+            console.log('Notes were appended to ' + dbFileLocation + '!');
         });
     })
 }
