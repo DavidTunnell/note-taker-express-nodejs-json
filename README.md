@@ -4,7 +4,7 @@ This application allows for users to enter notes via the client side which is av
 
 See the application function live on Huroku: https://note-taker-express-nodejs-json.herokuapp.com/
 
-# API
+## API
 
 The API calls available currently are:
 
