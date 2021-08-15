@@ -21,25 +21,29 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
-//API pulls from ./db/db.json
+//Read/GET - API pulls from ./db/db.json
 app.get('/api/notes', (req, res) => {
     let rawData = fs.readFileSync(dbFileLocation);
     return res.json(JSON.parse(rawData));
 });
 
-// POST request to add a notes object
+// Create/POST request to add a notes object
 app.post('/api/notes', (req, res) => {
     // get values from request body
-    const requestBody = req.body[0];
+    const requestBody = req.body;
     //generate a guid and add it to object before saving
     requestBody.id = uuid();
     //save
-    writeToDbJson(dbFileLocation, req.body[0]);
+    writeToDbJson(dbFileLocation, requestBody);
     //return id that was generated
-    res.json({ id_created: newId });
+    res.json({ id: requestBody.id });
 })
 
-//function that appends to db/json file 
+//Update/PUT
+
+//Delete
+
+//appends to db/json file and saves it
 const writeToDbJson = (dbFileLocation, newEntry) => {
     fs.readFile(dbFileLocation, function(err, data) {
         var json = JSON.parse(data);
