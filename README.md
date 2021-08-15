@@ -2,7 +2,7 @@
 
 This application allows for users to enter notes via the client side which is available in the public folder and they will be saved to a JSON file for persistence using a [node.js](https://nodejs.org/en/) and [express.js](https://expressjs.com/) server and the libraries [file system](https://nodejs.org/api/fs.html) and [path](https://nodejs.org/api/path.html). The server allows for the serving of a static index (/) and notes (/notes) web pages and an API with GET/POST/DELETE functionality. 
 
-See the application function live on Huroku: 
+See the application function live on Huroku: https://note-taker-express-nodejs-json.herokuapp.com/
 
 # API
 
@@ -21,16 +21,3 @@ Clone the repo down from github and then  run `npm install --save-dev nodemon` a
 ![screenshot](./assets/index.png)
 
 ![screenshot](./assets/notes.png)
-
-
-Delete once done:
-
-* Application must be deployed to Heroku.
-
-* Application deployed at live URL.
-
-* Application GitHub URL submitted.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-* The URL of the functional, deployed application.
