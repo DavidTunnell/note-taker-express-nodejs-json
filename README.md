@@ -19,7 +19,7 @@ Clone the repo down from github and then  run `npm install --save-dev nodemon` a
 ## Screenshots
 
 ![screenshot](./assets/index.png)
-hur
+
 ![screenshot](./assets/notes.png)
 
 

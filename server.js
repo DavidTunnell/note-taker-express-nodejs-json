@@ -6,7 +6,8 @@ const uuid = require('./helpers/uuid');
 
 //initialize express and default port
 const app = express();
-const PORT = 3001;
+//to run on huroku if not local
+const PORT = process.env.PORT || 3001
 const dbFileLocation = "./db/db.json";
 
 //middleware for parsing JSON and URL encoded data
